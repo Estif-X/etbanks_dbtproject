@@ -1,4 +1,4 @@
-Welcome to your new dbt project!
+Welcome to my etbanks_dbt project!
 
 ### Using the starter project
 
