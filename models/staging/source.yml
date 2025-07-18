@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: ANALYTICS_DB
+    schema: RAW
+    tables:
+      - name: banks_2022_2023_raw
+      - name: banks_2023_2024_raw
