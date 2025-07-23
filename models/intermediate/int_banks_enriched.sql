@@ -21,21 +21,21 @@ WITH enriched_data AS (
         -- Derive profit band based on net_income with more realistic thresholds
         CASE
             WHEN net_income >= 1000000000 THEN 'High Profit'
-            WHEN net_income >= 500000000 THEN 'Medium-High Profit'
-            WHEN net_income >= 100000000 THEN 'Medium Profit'
+            WHEN net_income >= 500000000 AND net_income < 1000000000 THEN 'Medium-High Profit'
+            WHEN net_income >= 100000000 AND net_income < 500000000 THEN 'Medium Profit'
             WHEN net_income > 0 THEN 'Low Profit'
             ELSE 'Loss'
         END AS profit_band,
         -- Derive capital tier based on total_capital with more realistic thresholds
         CASE
             WHEN total_capital >= 10000000000 THEN 'Large Capital' -- >= 10 Billion
-            WHEN total_capital >= 1000000000 THEN 'Medium Capital' -- >= 1 Billion
+            WHEN total_capital >= 1000000000 AND total_capital < 10000000000 THEN 'Medium Capital' -- >= 1 Billion
             ELSE 'Small Capital' -- < 1 Billion
         END AS capital_tier,
         -- Derive asset size based on total_asset with more realistic thresholds
         CASE
             WHEN total_asset >= 100000000000 THEN 'Large Asset Bank' -- >= 100 Billion
-            WHEN total_asset >= 10000000000 THEN 'Medium Asset Bank' -- >= 10 Billion
+            WHEN total_asset >= 10000000000 AND total_asset < 100000000000 THEN 'Medium Asset Bank' -- >= 10 Billion
             ELSE 'Small Asset Bank' -- < 10 Billion
         END AS asset_size
     FROM
